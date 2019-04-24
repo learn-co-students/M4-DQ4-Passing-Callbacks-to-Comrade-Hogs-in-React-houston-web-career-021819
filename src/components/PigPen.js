@@ -7,7 +7,7 @@ import exclaim from '../assets/exclaim.mp3';
 const pigs = [
   "Sobriety",
   "Trouble",
-  "Cherub",
+  "Cherub", 
   "MasterBlaster"
 ]
 
@@ -26,24 +26,26 @@ export default class PigPen extends React.Component {
   }
 
   alterEnvironment = (vibe) => {
+    console.log('you reached me')
     if (vibe === "inhospitable")
       this.audio.play()
-    const newState = {environment: vibe}
-    this.setState(newState)
+      this.setState({environment :vibe})
+      //trigger pig here?
   }
 
   generateSheeple = () => {
-    return pigs.map((name, idx) => (
-      <Pig key={idx} id={name} name={name} environment={this.state.environment} />
+    return pigs.map((name, idx) => (  // pig is connected only through its prop environment, which is just pigpen's environment
+      <Pig key={idx} id={name} name={name} environment={this.state.environment}/>
     ))
   }
 
   render() {
     const sheeple = this.generateSheeple()
+    //console.log
     return(
       <div id="pig-pen">
         {sheeple}
-        <GalaxySNote7 environment={null} alterEnvironment={null} />
+        <GalaxySNote7 environment={null} alterEnvironment={this.alterEnvironment/*null */} />
       </div>
     )
   }
