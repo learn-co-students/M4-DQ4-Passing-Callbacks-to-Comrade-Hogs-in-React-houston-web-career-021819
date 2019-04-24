@@ -25,13 +25,25 @@ export default class GalaxySNote7 extends React.Component {
   }
 
   exclaim = () => {
+    //console.log('hi')
+    this.setState({
+      panicked: true  //add exclamation mark
+    })
+
+    this.props.alterEnvironment('inhospitable') // trigger the event in parent
+
     if (this.state.panicked) return
     this.exclaimAudio.play()
     this.squeelAudio.play()
+
+    setTimeout(() => {
+      this.setState({panicked:false});
+      this.props.alterEnvironment('docile')
+    }, 3000);
   }
 
   panic = () => (<img id="galaxy-exclamation" className="exclamation" src={exclamation} alt="" />)
-
+  
   render() {
     return(
       <div id="galaxy-s-note" onClick={this.exclaim}>
