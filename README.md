@@ -15,7 +15,16 @@ Find GalaxySNote7 and help him alert his fellow hogs when someone touches his sn
 - On click, GalaxySNote7 should trigger a change in state for the pig pen's environment
 - Galaxy and his hog cadre should react to this change in their environment and use the `exclaim` method to render their warnings
 - Think about what components should own what information
+  - GalaxySNote 7 is child component of pigpen
+  - pigs is child component of pigpen
+  - GalaxySNote 7 -> pigpen -> pigs (**child-> parent -> all children**)
+  
 - Adhere to React patterns --> information propagates up and down the component tree, but not sideways
 - Understanding this, draw out the component tree with your group. A component tree should show the components and the data (props!) that are communicated between them
+
 - After at least two seconds, things in the pig pen should cool off, and the environment should return to normal (this means we should be able to click on GalaxySNote7 again, instigating the same chain of events all over again AFTER he has cooled his jets)
+  - change .render in PigPen.js
+  - change .render in Pig.js
+  - change .throwaFit in GalaxySNote7.js, call relax here.
+  - change .relax in GalaxySNote7.js 
 - Once GalaxySNote7 is successfully instigating panic when he is tickled, incorporate the sounds where you see fit!
