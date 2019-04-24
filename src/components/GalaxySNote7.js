@@ -8,23 +8,28 @@ export default class GalaxySNote7 extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      panicked: false,
+      panicked: false
     }
 
     this.squeelAudio = new Audio(wreee);
     this.exclaimAudio = new Audio(exclaim);
     this.exclaimAudio.addEventListener("ended", () => {
       this.throwAFit()
+      this.props.alterEnvironment("inhospitable")
     }, false)
   }
 
   throwAFit = () => {
+    this.relax()
   }
 
   relax = () => {
+    this.setState({panicked: false})
+    this.props.environment()
   }
 
   exclaim = () => {
+    this.setState({panicked: true})
     if (this.state.panicked) return
     this.exclaimAudio.play()
     this.squeelAudio.play()
